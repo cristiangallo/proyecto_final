@@ -1,0 +1,136 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Consumo telef&oacute;nico</title>
+
+<style type="text/css">
+
+h1 {
+color: #06C;
+font-size: 25px
+}
+h2 {
+font-size: 22px
+}
+table.contenedor {
+width: 15cm;
+margin: auto;
+font-family: Arial, Helvetica, sans-serif
+}
+table.periodo {
+margin-bottom: 25px;
+font-size: 14px
+}
+div.fecha {
+    padding-top:0.5cm;
+	padding-left: 0.5cm;
+	padding-right: 0.5cm;
+	padding-bottom: 0.2cm;
+    border: solid;
+    border-width: 2px
+}
+table.periodo em.desde {
+font-size: 12px;
+font-style: normal;
+color: #666;
+}
+table.resumen {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+    padding-top: 0.2cm;
+	padding-left: 0.2cm;
+	padding-right: 0.2cm;
+	padding-bottom: 0.1cm;
+    border-right: 0.1px dotted #000;
+    border-left: 0.1px dotted #000;
+    border-top: 0.1px dotted #000;
+    border-bottom: 0.1px dotted #000;
+    margin-top: 0.5cm;
+}
+table.resumen th {
+    text-align: left;
+    padding-top: 0.2cm;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-bottom: 0.1cm;
+    border-bottom: solid;
+    border-bottom-color: #999;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    background-color: #EBEBEB;
+    font-size: 14px;
+}
+table.resumen td {
+    border-bottom: 1px dotted #000;
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 0px;
+	padding-right: 0px;
+}
+table.resumen .der {
+    text-align: right;
+}
+table.resumen tr.ultima td {
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+    border-left-style: none;
+}
+.impreso{
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 8px;
+
+}
+
+
+</style>
+</head>
+<body>
+<div class="impreso">
+                <h1>Proyectos </h1>
+
+                <table class="periodo" width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Director</th>
+                        <th>Alumnos</th>
+                        <th>Asesor</th>
+                        <th>Orientacion</th>
+                        <th>Fecha_inscripcion</th>
+                        <th>Fecha_anteproyecto</th>
+                        <th>Fecha_final</th>
+
+                    {% for result in results %}
+
+                        <tr>
+                            <td>{{ result.titulo }}</td>
+                            <td>{{ result.director }}</td>
+                            <td>{{ result.lista_alumnos }}</td>
+                            <td>{{ result.asesor }}</td>
+                            <td>{{ result.orientacion }}</td>
+                            <td>{{ result.fecha_inscripcion|date:'d/m/Y' }}</td>
+                            <td>{{ result.fecha_anteproyecto|date:'d/m/Y' }}</td>
+                            <td>{{ result.fecha_final|date:'d/m/Y' }}</td>
+
+                        </tr>
+                    {% endfor %}
+                </table>
+
+
+</div>
+<pdf:nextpage/>
+
+</body>
+</html>
+
+
+
+

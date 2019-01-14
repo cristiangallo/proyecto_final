@@ -1,0 +1,3 @@
+Titulo,Director,Alumnos,Asesor,Orientacion,Fecha_inscripcion,Fecha_anteproyecto,Fecha_final
+{% for result in results %}{{ result.titulo }},{{ result.director }},{{ result.alumnos_csv }},{{ result.asesor }},{{ result.orientacion }},{{ result.fecha_inscripcion|date:'dd/mm/Y' }},{{ result.fecha_anteproyecto|date:'dd/mm/Y' }},{{ result.fecha_final|date:'dd/mm/Y' }}
+{% endfor %}

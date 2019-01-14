@@ -1,0 +1,28 @@
+{% extends "admin/base_site.html" %}
+
+{% load i18n %}
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans "Home" %}</a>&rsaquo;
+        <a href="/admin/proyecto">Proyecto</a>&rsaquo;
+        <a href="/admin/proyecto/alumno/">Alumnos</a>› Upload alumnos
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% block object-tools %}{% endblock %}
+    <div class="upload">
+        <div class="top"></div>
+            <div class="center">
+                <h2>Upload de alumnos</h2>
+                <h4>Subir alumnos</h4>
+                {% if form.errors %}<p style="color: red;"> {{form.errors}}</p>{% endif %}
+                <form enctype="multipart/form-data" method="post">{% csrf_token %}
+                    {{form.as_p}}
+                    <label><input type="submit" name="button" id="button" value="Subir" /></label>
+                </form>
+            </div>
+            <div class="bottom"></div>
+    </div>
+{% endblock %}
