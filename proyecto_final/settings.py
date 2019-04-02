@@ -31,8 +31,17 @@ SECRET_KEY = 'dammc_w=qn))#dmw96hzc(fkf12w2*c8m!zgc%*drstx&7k48u'
 DEBUG = False
 
 ALLOWED_HOSTS = ['proyectos-eie.mooo.com']
-ADMINS = [('Cristian M. Gallo', 'cgallo@lacapital.com.ar')]
+ADMINS = [('Cristian M. Gallo', 'mail@cristiangallo.com.ar')]
 MANAGERS = ADMINS
+
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "cristiangallo"
+EMAIL_HOST_PASSWORD = "ga11ardo"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_SUBJECT_PREFIX = "[Proyecto-EIE]"
+DEFAULT_FROM_EMAIL = "cristiangallo@gmail.com"
+SEND_BROKEN_LINK_EMAIL = True
 
 # Application definition
 
@@ -141,7 +150,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-ar'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC-3'
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
 
 USE_I18N = True
 
@@ -173,4 +183,5 @@ def ip_addresses():
     return ip_list
 
 
-ALLOWED_HOSTS += ip_addresses()
+if socket.gethostname() == 'sistemas2':
+    ALLOWED_HOSTS += ip_addresses()
