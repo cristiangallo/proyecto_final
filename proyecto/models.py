@@ -63,10 +63,10 @@ def pdf_path_and_rename(instance, filename):
 class Proyecto(models.Model):
     titulo = models.CharField(max_length=255)
     alumnos = models.ManyToManyField(Alumno)
-    director = models.ForeignKey(Director, null=True, blank=True, on_delete=models.PROTECT)
+    director = models.ForeignKey(Director, on_delete=models.PROTECT)
     co_director = models.ForeignKey(Director, related_name="co_director", null=True, blank=True, on_delete=models.PROTECT)
     asesor = models.ForeignKey(Director, related_name="asesor", null=True, blank=True, on_delete=models.PROTECT)
-    orientacion = models.ForeignKey(Orientacion, null=True, blank=True, on_delete=models.PROTECT)
+    orientacion = models.ForeignKey(Orientacion, on_delete=models.PROTECT)
     plan = models.ForeignKey(Plan, null=True, blank=True)
     fecha_inscripcion = models.DateField()
     fecha_anteproyecto = models.DateField(null=True, blank=True)

@@ -46,13 +46,16 @@ class UploadContactosForm(forms.Form):
 
 
 class ProyectoForm(forms.ModelForm):
-    director = forms.ModelChoiceField(queryset=Director.objects.all(), required=False,
+    director = forms.ModelChoiceField(queryset=Director.objects.all(), required=True,
                                       widget=autocomplete.ModelSelect2(url='director-autocomplete'))
+
+    co_director = forms.ModelChoiceField(queryset=Director.objects.all(), required=False,
+                                         widget=autocomplete.ModelSelect2(url='director-autocomplete'))
 
     asesor = forms.ModelChoiceField(queryset=Director.objects.all(), required=False,
                                     widget=autocomplete.ModelSelect2(url='director-autocomplete'))
 
-    orientacion = forms.ModelChoiceField(queryset=Orientacion.objects.all(), required=False,
+    orientacion = forms.ModelChoiceField(queryset=Orientacion.objects.all(), required=True,
                                          widget=autocomplete.ModelSelect2(url='orientacion-autocomplete'))
 
     class Meta:
