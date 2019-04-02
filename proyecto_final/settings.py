@@ -31,7 +31,7 @@ SECRET_KEY = 'dammc_w=qn))#dmw96hzc(fkf12w2*c8m!zgc%*drstx&7k48u'
 DEBUG = True
 
 ALLOWED_HOSTS = ['proyectos-eie.mooo.com']
-ADMINS = [('Cristian M. Gallo', 'mail@cristiangallo.com.ar')]
+ADMINS = [('Cristian M. Gallo', 'mail@cristiangallo.com.ar'), ('Aldo L. Gentile', 'aldogentile.proyectoeie@gmail.com')]
 MANAGERS = ADMINS
 
 EMAIL_HOST = "smtp.gmail.com"
