@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'dammc_w=qn))#dmw96hzc(fkf12w2*c8m!zgc%*drstx&7k48u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['proyectos-eie.mooo.com']
 ADMINS = [('Cristian M. Gallo', 'mail@cristiangallo.com.ar')]
@@ -36,7 +36,7 @@ MANAGERS = ADMINS
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "cristiangallo"
-EMAIL_HOST_PASSWORD = "ga11ardo"
+EMAIL_HOST_PASSWORD = "tkGue743"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_SUBJECT_PREFIX = "[Proyecto-EIE]"
