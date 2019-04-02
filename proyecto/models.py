@@ -76,7 +76,7 @@ class Proyecto(models.Model):
     modificado = models.DateTimeField(auto_now=True, editable=False)
 
     def __str__(self):
-        return u'%s - %s' % (self.titulo, self.director)
+        return u'%s%s' % (self.titulo, " - %s" % self.director if self.director else "")
 
     def lista_alumnos(self):
         lista = ""
