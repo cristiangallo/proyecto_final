@@ -5,6 +5,71 @@ from dal import autocomplete
 from .models import Director, Orientacion
 
 
+def download_csv_data(request):
+    from proyecto.models import Proyecto
+    from django.http import HttpResponse
+    import csv
+    from django.utils.encoding import smart_str
+
+    response = HttpResponse(content_type='text/csv')
+
+    response['Content-Disposition'] = 'attachment; filename="proyectos.csv"'
+
+    '''
+    titulo = models.CharField(max_length=255)
+    alumnos = models.ManyToManyField(Alumno)
+    director = models.ForeignKey(Director, on_delete=models.PROTECT)
+    co_director = models.ForeignKey(Director, related_name="co_director", null=True, blank=True, on_delete=models.PROTECT)
+    asesor = models.ForeignKey(Director, related_name="asesor", null=True, blank=True, on_delete=models.PROTECT)
+    orientacion = models.ForeignKey(Orientacion, on_delete=models.PROTECT)
+    plan = models.ForeignKey(Plan, null=True, blank=True)
+    fecha_inscripcion = models.DateField()
+    fecha_anteproyecto = models.DateField(null=True, blank=True)
+    fecha_final = models.DateField(null=True, blank=True)
+    anteproyecto = models.FileField(upload_to=pdf_path_and_rename, null=True, blank=True)
+    creado = models.DateTimeField(auto_now_add=True, editable=False)
+    modificado = models.DateTimeField(auto_now=True, editable=False)    
+    '''
+
+    writer = csv.writer(response, csv.excel)
+    response.write(u'\ufeff'.encode('utf8'))
+
+    # write the headers
+    writer.writerow([
+        smart_str(u"Título"),
+        smart_str(u"Director"),
+        smart_str(u"Co-Director"),
+        smart_str(u"Asesor"),
+        smart_str(u"Orientación"),
+        smart_str(u"Plan"),
+        smart_str(u"fecha_inscripcion"),
+        smart_str(u"fecha_anteproyecto"),
+        smart_str(u"fecha_final"),
+        smart_str(u"Anteproyecto"),
+        smart_str(u"Modificado"),
+        smart_str(u"creado"),
+    ])
+
+    #get data from database or from text file....
+    proyectos = Proyecto.objects.all()
+    for proyecto in proyectos:
+        writer.writerow([
+            smart_str(proyecto.titulo),
+            smart_str(proyecto.director),
+            smart_str(proyecto.co_director),
+            smart_str(proyecto.asesor),
+            smart_str(proyecto.orientacion),
+            smart_str(proyecto.plan),
+            smart_str(proyecto.fecha_inscripcion),
+            smart_str(proyecto.fecha_anteproyecto),
+            smart_str(proyecto.fecha_final),
+            smart_str(proyecto.anteproyecto),
+            smart_str(proyecto.modificado),
+            smart_str(proyecto.creado),
+        ])
+    return response
+
+
 def upload_alumnos(request):
     from .forms import UploadContactosForm
 
