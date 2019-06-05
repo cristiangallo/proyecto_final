@@ -76,11 +76,7 @@ class Proyecto(models.Model):
     modificado = models.DateTimeField(auto_now=True, editable=False)
 
     def __str__(self):
-        try:
-            return u'%s%s' % (self.titulo, " - %s" % self.director if self.director else "")
-
-        except:
-            return u'%s' % self.titulo
+        return u'%s - %s' % (self.titulo, self.director)
 
     def lista_alumnos(self):
         lista = ""
