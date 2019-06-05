@@ -37,6 +37,7 @@ def download_csv_data(request):
     # write the headers
     writer.writerow([
         smart_str(u"Título"),
+        smart_str(u"Alumnos"),
         smart_str(u"Director"),
         smart_str(u"Co-Director"),
         smart_str(u"Asesor"),
@@ -53,11 +54,16 @@ def download_csv_data(request):
     #get data from database or from text file....
     proyectos = Proyecto.objects.all()
     for proyecto in proyectos:
+        alumnos = ""
+        for alumno in proyecto.alumnos.all():
+            alumnos += "%s//" % alumno
+
         writer.writerow([
             smart_str(proyecto.titulo),
-            smart_str(proyecto.director),
-            smart_str(proyecto.co_director),
-            smart_str(proyecto.asesor),
+            smart_str(alumnos),
+            smart_str(proyecto.director if proyecto.director else ''),
+            smart_str(proyecto.co_director if proyecto.co_director else ''),
+            smart_str(proyecto.asesor if proyecto.asesor else ''),
             smart_str(proyecto.orientacion),
             smart_str(proyecto.plan),
             smart_str(proyecto.fecha_inscripcion),
