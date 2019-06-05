@@ -111,7 +111,7 @@ if socket.gethostname() == 'sistemas2':
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'proyecto',
+            'NAME': 'proyectos',
             'USER': 'cgallo',
             'PASSWORD': '',
             'HOST': '127.0.0.1',
